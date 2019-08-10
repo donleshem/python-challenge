@@ -16,6 +16,7 @@ print ("--------------------------")
 csvpath = os.path.join("../..", "COLNYC20190716DATA", "02-Homeworks", "03-Python", "Instructions",
  "PyBank", "Resources", "budget_data.csv")
 
+
 # Open the CSV
 with open(csvpath,newline = None) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
@@ -52,9 +53,12 @@ with open(csvpath,newline = None) as csvfile:
             greatest_decrease[1] = revenue_change
 
 
+# The net total amount of "Profit/Losses" over the entire perio
+    print("Total: "+ str(total_Profit))
 
  # The average of the changes in "Profit/Losses" over the entire period
     print("Average Change: " + "$" + str(sum(revenue_change_list)/ len(revenue_change_list)))
+
 
 # print the Greatest Increase in Profits
     print ("Greatest Increase in Profits: " + " (" + "$" + str(greatest_increase)+ ")")
@@ -64,8 +68,19 @@ with open(csvpath,newline = None) as csvfile:
 
 
     # exportnig the file 
-  #  dframe.to_csv(“budget_data.csv”)
+    with open("Output_for_PyBank.txt", "w") as text_file:
+        text_file.write ("Financial Analysis")
+        text_file.write("\n")
+        text_file.write ("--------------------------")
+        text_file.write("\n")
+        text_file.write ("Total Months: " + str(total_months))
+        text_file.write("\n")
+        text_file.write ("Total: "+ str(total_Profit))
+        text_file.write("\n")
+        text_file.write("Average Change: " + "$" + str(sum(revenue_change_list)/ len(revenue_change_list)))
+        text_file.write("\n")
+        text_file.write ("Greatest Increase in Profits: " + " (" + "$" + str(greatest_increase)+ ")")
+        text_file.write("\n")
+        text_file.write ("Greatest Decrease in Profits: " + " (" + "$" + str(greatest_decrease)+ ")")
+        text_file.close()
 
-
-
- 
