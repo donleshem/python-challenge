@@ -40,7 +40,6 @@ with open(csvpath,newline = None) as csvfile:
 
         vote_dic[current_candidate] = vote_dic[current_candidate] + 1
     
- 
    
     # looping indir the dic
     for candidate in vote_dic:
@@ -50,13 +49,18 @@ with open(csvpath,newline = None) as csvfile:
 
         if (votes_for_candidate > winner_vote_number):
             winner_vote_number = winner_vote_number + votes_for_candidate
-          
+
+
         
-        print(candidate + ": " + "% " + str(float(votes_for_candidate)/float(vote_count)*100) + " (" + str(votes_for_candidate) + ")")
+        print(candidate + ": " + "% " + str(round(float(votes_for_candidate)/float(vote_count)*100,3)) + " (" + str(votes_for_candidate) + ")")
     print ("--------------------------")
     
+    for name, vote in vote_dic.items():   
+        if vote == winner_vote_number:
+            winner_name = name
+
     # the winner 
-    print ("Winner: " + str(winner_vote_number))
+    print ("Winner: " + str(winner_name))
     print ("--------------------------")
 
     # exportnig the file 
@@ -65,21 +69,23 @@ with open(csvpath,newline = None) as csvfile:
         text_file.write("\n")
         text_file.write ("--------------------------")
         text_file.write("\n")
+        text_file.write ("Total Votes: " + str(vote_count))
+        text_file.write("\n")
+        text_file.write ("--------------------------")
+        text_file.write("\n")
+        
 
         for candidate in vote_dic:
-            text_file.write(candidate + ": " + "% " + str(float(votes_for_candidate)/float(vote_count)*100) + " (" + str(votes_for_candidate) + ")")
+            votes_for_candidate = vote_dic.get(candidate)
+            text_file.write(candidate + ": " + "% " + str(round(float(votes_for_candidate)/float(vote_count)*100,3)) + " (" + str(votes_for_candidate) + ")")
             text_file.write("\n")
         text_file.write ("--------------------------")
         text_file.write("\n")
-        text_file.write("Winner: " + str(winner_vote_number))
+        text_file.write("Winner: " + str(winner_name))
         text_file.close()
 
 
 
-        #for candidate in vote_dic:
-            #if candidate == winner_vote_number:
-                #winner_name = vote_dic.get(name)
-       # print(winner_name)
 
 
 

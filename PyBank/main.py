@@ -57,14 +57,14 @@ with open(csvpath,newline = None) as csvfile:
     print("Total: "+ str(total_Profit))
 
  # The average of the changes in "Profit/Losses" over the entire period
-    print("Average Change: " + "$" + str(sum(revenue_change_list)/ len(revenue_change_list)))
+    print("Average Change: " + "$" + str(round(sum(revenue_change_list[1:])/ len(revenue_change_list),3)))
 
 
 # print the Greatest Increase in Profits
-    print ("Greatest Increase in Profits: " + " (" + "$" + str(greatest_increase)+ ")")
+    print ("Greatest Increase in Profits: " + str(greatest_increase[0])+ " ($" + str(greatest_increase[1])+ ")")
 
  # print the Greatest Decrease in Profits
-    print ("Greatest Decrease in Profits: " + " (" + "$" + str(greatest_decrease)+ ")")
+    print ("Greatest Decrease in Profits: " + str(greatest_decrease[0])+ " ($"+ str(greatest_decrease[1])+  ")")
 
 
     # exportnig the file 
@@ -77,10 +77,10 @@ with open(csvpath,newline = None) as csvfile:
         text_file.write("\n")
         text_file.write ("Total: "+ str(total_Profit))
         text_file.write("\n")
-        text_file.write("Average Change: " + "$" + str(sum(revenue_change_list)/ len(revenue_change_list)))
+        text_file.write("Average Change: " + "$" + str(round(sum(revenue_change_list[1:])/ len(revenue_change_list),3)))
         text_file.write("\n")
-        text_file.write ("Greatest Increase in Profits: " + " (" + "$" + str(greatest_increase)+ ")")
+        text_file.write ("Greatest Increase in Profits: " + str(greatest_increase[0])+ " ($" + str(greatest_increase[1])+ ")")
         text_file.write("\n")
-        text_file.write ("Greatest Decrease in Profits: " + " (" + "$" + str(greatest_decrease)+ ")")
+        text_file.write ("Greatest Decrease in Profits: " + str(greatest_decrease[0])+ " ($"+ str(greatest_decrease[1])+  ")")
         text_file.close()
 
